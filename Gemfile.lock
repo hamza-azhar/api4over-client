@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    api4over-client (0.0.1)
-      httparty
+    api4over (0.0.1)
+      httparty (~> 0.18.0)
       savon (~> 2.12.0)
 
 GEM
@@ -72,11 +72,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  api4over-client!
+  api4over!
   bundler (~> 2.1.4)
+  byebug
   colorize (~> 0.8.1)
   parallel (~> 1.12.1)
-  pry-byebug (~> 3.4.0)
+  pry-byebug
   rake (~> 13.0.1)
   rspec (~> 3.8)
 
