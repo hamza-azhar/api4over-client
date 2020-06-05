@@ -3,8 +3,9 @@ require 'openssl'
 
 module Api4Over
   class Client
+    require 'api4over/client/no_service_url_error'
     require 'api4over/print_products'
-    
+
     def initialize(private_key:, public_key:, mode: 'test')
       @api_key = public_key
       @private_key = Digest::SHA256.hexdigest(private_key)
@@ -39,6 +40,15 @@ module Api4Over
     def get_product_feeds(options={})
       Api4Over::PrintProducts.new.retrieve_product_feeds(
         path: "/printproducts/productsfeed", 
+        parameters: build_parameters_for_product(options),
+        mode: @mode
+      )
+    end
+
+    def get_quantity_discounts(options={})
+      return {"status"=>"error", "status_code"=>400, "status_text"=>"Bad Request", "current_content"=>"", "message"=>"Product UUID parameter is missing"} unless options[:product_uuid]
+      Api4Over::PrintProducts.new.retrieve_quantity_discounts(
+        path: "/printproducts/products/#{options[:product_uuid]}/quantitydiscounts", 
         parameters: build_parameters_for_product(options),
         mode: @mode
       )

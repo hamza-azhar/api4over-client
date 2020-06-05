@@ -1,1 +1,1 @@
-class Api4over::Client::NoServiceUrlError < StandardError; end
+class Api4Over::Client::NoServiceUrlError < StandardError; end

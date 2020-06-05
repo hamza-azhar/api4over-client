@@ -31,5 +31,11 @@ module Api4Over
       response = self.class.get(path, parameters)
       response.parsed_response
     end
+
+    def retrieve_quantity_discounts(path:, parameters: {}, mode: 'test')
+      self.class.base_uri (mode == 'test' ? 'https://sandbox-api.4over.com' : 'https://api.4over.com')
+      response = self.class.get(path, parameters)
+      response.parsed_response
+    end
   end
 end

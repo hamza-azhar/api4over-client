@@ -1,10 +1,11 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "api4over/client/version"
+require "api4over/client/no_service_url_error"
 
 Gem::Specification.new do |spec|
   spec.name          = "api4over"
-  spec.version       = Api4over::Client::VERSION
+  spec.version       = Api4Over::Client::VERSION
   spec.authors       = ["Hamza Azhar"]
   spec.email         = ["hamzafastian@gmail.com"]
 
@@ -15,10 +16,11 @@ Gem::Specification.new do |spec|
 
   
   spec.files = [
+    "lib/api4over/client/no_service_url_error.rb",
     "lib/api4over.rb",
     "lib/api4over/print_products.rb"
   ]
-  
+
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
@@ -27,8 +29,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0.1"
   spec.add_development_dependency "rspec", "~> 3.8"
   spec.add_development_dependency "pry-byebug", "~> 3.4.0"
-  # spec.add_development_dependency "parallel", "~>1.12.1"
-  # spec.add_development_dependency "colorize", "~>0.8.1"
 
   spec.add_dependency 'httparty', '~>0.18.0'
 end
