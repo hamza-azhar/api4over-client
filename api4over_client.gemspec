@@ -18,7 +18,8 @@ Gem::Specification.new do |spec|
   spec.files = [
     "lib/api4over/client/no_service_url_error.rb",
     "lib/api4over.rb",
-    "lib/api4over/print_products.rb"
+    "lib/api4over/print_products.rb",
+    "lib/api4over/organizations.rb"
   ]
 
   spec.bindir        = "exe"
@@ -27,8 +28,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 2.1.4"
   spec.add_development_dependency "rake", "~> 13.0.1"
-  spec.add_development_dependency "rspec", "~> 3.8"
-  spec.add_development_dependency "pry-byebug", "~> 3.4.0"
+  # spec.add_development_dependency "rspec", "~> 3.8"
+  # spec.add_development_dependency "pry-byebug", "~> 3.4.0"
 
   spec.add_dependency 'httparty', '~>0.18.0'
 end

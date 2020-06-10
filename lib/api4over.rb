@@ -5,6 +5,7 @@ module Api4Over
   class Client
     require 'api4over/client/no_service_url_error'
     require 'api4over/print_products'
+    require 'api4over/organizations'
 
     def initialize(private_key:, public_key:, mode: 'test')
       @api_key = public_key
@@ -49,6 +50,14 @@ module Api4Over
       return {"status"=>"error", "status_code"=>400, "status_text"=>"Bad Request", "current_content"=>"", "message"=>"Product UUID parameter is missing"} unless options[:product_uuid]
       Api4Over::PrintProducts.new.retrieve_quantity_discounts(
         path: "/printproducts/products/#{options[:product_uuid]}/quantitydiscounts", 
+        parameters: build_parameters_for_product(options),
+        mode: @mode
+      )
+    end
+
+    def get_organizations(options={})
+      Api4Over::Organizations.new.retrieve_organizations(
+        path: "/organizations", 
         parameters: build_parameters_for_product(options),
         mode: @mode
       )

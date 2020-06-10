@@ -28,6 +28,8 @@ client = Api4Over::Client.new(
 	mode: "test / live" #optional. Default is 'test'
 )
 
+## Print Products
+
 # Get all products
 products = client.get_products(options={})
 
@@ -42,6 +44,11 @@ client.get_product_feeds(options={})
 
 # Get all quantity discounts of a product
 client.get_quantity_discounts(options={product_uuid: PRODUCT_UUID})
+
+## Organizations
+
+# Get all organizations
+organizations = client.get_organizations(options={})
 
 ```
 
